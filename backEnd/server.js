@@ -5,7 +5,7 @@ const dotenv=require(`dotenv`);
 dotenv.config({path:`backEnd/config/config.env`})
 
 //connected database
-connectedbase();
+connectDatabase();
 
 
 
