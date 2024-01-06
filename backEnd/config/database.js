@@ -5,7 +5,7 @@ const mongoose =require(`mongoose`)
 
 const connectDatabase=()=>{
     mongoose.connect(process.env.DB_LOCAL_URI,{
-        autoIndex:false,
+        autoIndex:true,
         family: 4
     }).then(con =>{
         console.log(`MongoDB database connected with host: ${con.connection.host}`)

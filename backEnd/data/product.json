@@ -1,3 +1,18 @@
 [
-    {}
-]
+    {
+     "name": "SanDisk ultra 128GB SDXC UHS-I Memory Card up to 80MB/s",
+     "price": "45.89",
+     "description": "ultra_fast cards with to take better pictures.The SanDisk Ultra® microSD™ UHS-I card with SD adapter gives you the freedom to shoot, save and share more than ever before. With capacities up to 1TB1, our SanDisk Ultra microSD card has room for even more hours of Full HD video4 and delivers transfer speeds of up to 150MB/s2 to help you move that content fast. Ideal for Android™ smartphones and tablets, the card loads apps faster with A1-rated performance. 3",
+     "ratings": 4.5,
+     "images": [{
+                "public_id": "products/8194p4lS-3L._AC_UL210_SR210_210__yfky1o",
+                "url":"https://res.cloudinary.com/dsiqj7ges/image/upload/v1704220381/8194p4lS-3L._AC_UL210_SR210_210__yfky1o.jpg"
+     }],
+     "category": "Electronics",
+      "seller": "Ebay",
+      "stock": 50,
+      "numOfreviews":32,
+      "reviews":[]  
+    }
+  ]
+  
