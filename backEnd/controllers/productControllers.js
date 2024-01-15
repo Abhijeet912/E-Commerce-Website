@@ -1,28 +1,30 @@
 const Product=require('../models/product') //import product from models
-const ErrorHandler=require('../utils/errorHandler');
+const ErrorHandler=require('../utils/ErrorHandler');
+
+const catchAysncErrors = require('../middlewares/catchAsyncError');
 //create a new Product => /api/v1/products/new
-exports.newProduct = async(req,res,next) => {
+exports.newProduct = catchAysncErrors(async(req,res,next) => {
     const product = await Product.create(req.body);
     
         res.status(201).json({
             success: true,
             product
         })
-}
+})
 //Get all products => /api/v1/products
 
-exports.getProducts = async(req, res, next) => {
+exports.getProducts = catchAysncErrors(async(req, res, next) => {
   const products = await Product.find();
     res.status(200).json({
       success: true,
       count:products.length,
       products
     })
-  }
+  })
 
 
   //get single product => /api/v1/products/:id
-  exports.getSingleProduct = async(req, res, next) => {
+  exports.getSingleProduct = catchAysncErrors(async(req, res, next) => {
     const product = await Product.findById(req.params.id);
     if (!product) {
       return next(new ErrorHandler('Product not found',404))
@@ -31,10 +33,10 @@ exports.getProducts = async(req, res, next) => {
       success: true,
       product
     })
-  }
+  })
 
   //update product => /api/v1/admin/products/:id
-  exports.updateProduct = async(req, res, next) => {
+  exports.updateProduct = catchAysncErrors(async(req, res, next) => {
     let product = await Product.findById(req.params.id, req.body, {
     });
     if (!product) {
@@ -52,10 +54,10 @@ exports.getProducts = async(req, res, next) => {
       success: true,
       product
     })
-  }
+  })
 
   //delete product => /api/v1/admin/products/:id
-  exports.deleteProduct = async(req, res, next) => {
+  exports.deleteProduct = catchAysncErrors(async(req, res, next) => {
     const product = await Product.findById(req.params.id);
     if (!product) {
       return res.status(404).json({
@@ -68,4 +70,4 @@ exports.getProducts = async(req, res, next) => {
       success: true,
       message:'Product deleted successfully'
     })
-  }
+  })
