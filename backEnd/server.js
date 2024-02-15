@@ -4,6 +4,13 @@ const connectDatabase=require(`./config/database`)
 const dotenv=require(`dotenv`);
 dotenv.config({path:`backEnd/config/config.env`})
 
+
+//Handle uncaught exceptions
+process.on('uncaughtException',err=>{
+    console.log(`Error: ${err.stack}`);
+    console.log(`Shutting down due to uncaught exception: ${err.stack}`);
+    process.exit(1);
+})
 //connected database
 connectDatabase();
 

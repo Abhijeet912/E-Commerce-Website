@@ -2,8 +2,13 @@ const Product=require('../models/product') //import product from models
 const ErrorHandler=require('../utils/ErrorHandler');
 
 const catchAysncErrors = require('../middlewares/catchAsyncError');
+const APIFeatures = require('../utils/apiFeatures');
+
+
 //create a new Product => /api/v1/products/new
 exports.newProduct = catchAysncErrors(async(req,res,next) => {
+
+    
     const product = await Product.create(req.body);
     
         res.status(201).json({
@@ -11,13 +16,20 @@ exports.newProduct = catchAysncErrors(async(req,res,next) => {
             product
         })
 })
-//Get all products => /api/v1/products
+//Get all products => /api/v1/products?keyword=apple
 
 exports.getProducts = catchAysncErrors(async(req, res, next) => {
+  const resPerpage=4;
+  const productCount= await Product.countDocuments();
+  const apiFeatures=new APIFeatures(Product.find(),req.query )
+  .search()
+  .filter()
+  .pagination(resPerpage)
   const products = await Product.find();
     res.status(200).json({
       success: true,
       count:products.length,
+      productCount,
       products
     })
   })
